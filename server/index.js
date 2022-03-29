@@ -1,11 +1,12 @@
 const express = require('express')
 const app = express()
-const port = 3000
 const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 const { User } = require('./models/User')
 const config = require('./config/key')
 const { auth } = require('./middleware/auth')
+
+const port = 3001
 
 // application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({extended: true}));
@@ -32,9 +33,9 @@ app.post('/api/users/register', (req, res) => {
     const user = new User(req.body)
 
     user.save((err, userInfo) => {
-        if (err) return res.json({ success: false, err})
+        if (err) return res.json({ registerSuccess: false, err})
         return res.status(200).json({
-            success: true
+            registerSuccess: true
         })
     })
 })
@@ -90,9 +91,13 @@ app.get('/api/users/logout', auth, (req, res) => {
         (err, user) => {
             if (err) return res.json({ success: false, err });
             return res.status(200).send({
-                success: true
+                logoutSuccess: true
             })
         })
+})
+
+app.get('/api/hello', (req, res) => {
+    res.send("안녕하세요!!")
 })
 
 app.listen(port, () => console.log(`Example app listening on port ${port}`))

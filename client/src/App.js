@@ -3,12 +3,12 @@ import './App.css'
 import {
   BrowserRouter,
   Routes,
-  Route
+  Route,
 } from "react-router-dom"
 
-import LandingPage from './components/views/LandingPage/LandingPage';
-import LoginPage from './components/views/LoginPage/LoginPage';
-import RegisterPage from './components/views/RegisterPage/RegisterPage';
+import LandingPage from './components/views/LandingPage/LandingPage'
+import LoginPage from './components/views/LoginPage/LoginPage'
+import RegisterPage from './components/views/RegisterPage/RegisterPage'
 
 function App() {
   return (
